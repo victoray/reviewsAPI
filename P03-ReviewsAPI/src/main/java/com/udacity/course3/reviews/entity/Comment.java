@@ -14,12 +14,10 @@ public class Comment {
     @Column(name = "comment")
     String comment;
 
-    @Column(name = "review_id")
-    int reviewId;
-
     @Column(name = "time")
     String time;
 
+    @ManyToOne
     Review review;
 
     public int getId() {
@@ -38,14 +36,6 @@ public class Comment {
         this.comment = comment;
     }
 
-    public int getReviewId() {
-        return reviewId;
-    }
-
-    public void setReviewId(int reviewId) {
-        this.reviewId = reviewId;
-    }
-
     public String getTime() {
         return time;
     }
@@ -54,8 +44,6 @@ public class Comment {
         this.time = time;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "review_id", nullable = false)
     public Review getReview(){
         return review;
     }

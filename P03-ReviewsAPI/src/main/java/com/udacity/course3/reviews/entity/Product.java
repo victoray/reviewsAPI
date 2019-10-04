@@ -17,15 +17,12 @@ public class Product {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     int id;
 
-    @Column(name = "review")
+    @Column(name = "name")
     String name;
 
 
     @Column(name = "units")
     int units;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
-    Set<Review> reviews = new HashSet<>();
 
     public Product() {
     }
@@ -52,14 +49,5 @@ public class Product {
 
     public void setUnits(int units) {
         this.units = units;
-    }
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
-    public Set<Review> getReviews() {
-        return reviews;
-    }
-
-    public void setReviews(Set<Review> reviews) {
-        this.reviews = reviews;
     }
 }

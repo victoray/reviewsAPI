@@ -17,16 +17,11 @@ public class Review {
     @Column(name = "review")
     String review;
 
-    @Column(name = "product_id")
-    int productId;
-
     @Column(name = "time")
     String time;
 
+    @ManyToOne
     Product product;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "review")
-    Set<Comment> comments = new HashSet<>();
 
     public int getId() {
         return id;
@@ -44,14 +39,6 @@ public class Review {
         this.review = review;
     }
 
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-
     public String getTime() {
         return time;
     }
@@ -60,17 +47,6 @@ public class Review {
         this.time = time;
     }
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "review")
-    public Set<Comment> getComments() {
-        return comments;
-    }
-
-    public void setComments(Set<Comment> comments) {
-        this.comments = comments;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
     public Product getProduct(){
         return product;
     }

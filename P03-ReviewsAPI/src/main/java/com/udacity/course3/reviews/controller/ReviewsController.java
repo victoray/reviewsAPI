@@ -53,6 +53,8 @@ public class ReviewsController {
      */
     @RequestMapping(value = "/reviews/products/{productId}", method = RequestMethod.GET)
     public ResponseEntity<List<?>> listReviewsForProduct(@PathVariable("productId") Integer productId) {
-        return new ResponseEntity<List<?>>(reviewRepository.findAllByProductId(productId), HttpStatus.OK);
+        return new ResponseEntity<List<?>>(reviewRepository.findAllByProduct(
+                productRepository.findById(productId)
+                .orElseThrow(()-> new RuntimeException("Not Found"))), HttpStatus.OK);
     }
 }
